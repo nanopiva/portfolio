@@ -19,7 +19,7 @@ export async function POST(req: Request) {
 
   try {
     await resend.emails.send({
-      from: "Tu Portfolio <tu@tu-dominio.com>",
+      from: "Portfolio <portfolio@nanop.com.ar>",
       to: ["mpiva24@gmail.com"],
       subject: `Nuevo mensaje de ${name}`,
       replyTo: email,

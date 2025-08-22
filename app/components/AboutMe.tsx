@@ -29,14 +29,13 @@ export default function AboutMe() {
     es: {
       title: "sobre_mí",
       intro:
-        "Soy Mariano Piva, un {dev} argentino, curioso por naturaleza y {autodidacta} desde hace años. Estudio la {carrera}, combinando formación académica con práctica constante.",
+        "Soy Mariano Piva, un desarrollador fullstack argentino, curioso por naturaleza y {autodidacta} desde hace años. Actualmente estoy estudiando la {carrera}, combinando formación académica con práctica constante.",
       passion:
         "Me apasiona crear {interfaces} limpias, funcionales y con una experiencia de usuario cuidada al detalle. Actualmente desarrollo {proyectos} utilizando:",
       strength:
         "Mi mayor fortaleza es el aprendizaje constante a través de la práctica, enfocándome en construir aplicaciones modernas que integren tanto diseño cuidado como lógica robusta del lado del cliente y del servidor.",
       languages: "Hablo {español} (nativo), {inglés} e {italiano} con fluidez.",
       highlighted: {
-        dev: "desarrollador fullstack",
         autodidacta: "autodidacta",
         carrera: "Tecnicatura en Desarrollo de Software",
         interfaces: "interfaces",
@@ -49,7 +48,7 @@ export default function AboutMe() {
     en: {
       title: "about_me",
       intro:
-        "I'm Mariano Piva, an Argentine {dev}, naturally curious and {selfTaught} for years. I'm studying {degree}, combining academic training with constant practice.",
+        "I'm Mariano Piva, a fullstack developer from Argentina, naturally curious and a {selfTaught} learner for years. I am currently studying a {degree}, combining academic training with constant practice.",
       passion:
         "I'm passionate about creating clean and functional {interfaces} with carefully detailed user experience. Currently developing {projects} using:",
       strength:
@@ -57,8 +56,7 @@ export default function AboutMe() {
       languages:
         "I speak {spanish} (native), {english} and {italian} fluently.",
       highlighted: {
-        dev: "fullstack developer",
-        selfTaught: "autodidact",
+        selfTaught: "self-taught",
         degree: "Technical Degree in Software Development",
         interfaces: "interfaces",
         projects: "fullstack projects",

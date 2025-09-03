@@ -5,6 +5,11 @@ import Footer from "./components/Footer";
 import Background from "./components/Background";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { cookies } from "next/headers";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Mariano Piva — Portfolio",
+};
 
 const sora = Sora({
   subsets: ["latin"],

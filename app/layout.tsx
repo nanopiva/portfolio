@@ -8,7 +8,7 @@ import { cookies } from "next/headers";
 import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
-  title: "Mariano Piva — Desarrollador Java & Fullstack",
+  title: "Mariano Piva - Portfolio",
   description:
     "Portfolio de Mariano Piva, desarrollador de software argentino. Trabajo principalmente con Java y Spring Boot, y también con React y Next.js.",
   keywords: [

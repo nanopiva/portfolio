@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, ReactElement } from "react";
+import { useRef, useEffect, useMemo, ReactElement } from "react";
 import {
   FaReact,
   FaNodeJs,
@@ -8,14 +8,17 @@ import {
   FaJs,
   FaCss3Alt,
   FaHtml5,
+  FaJava,
+  FaGitAlt,
 } from "react-icons/fa";
 import {
   SiTypescript,
-  SiTailwindcss,
   SiNextdotjs,
   SiPostgresql,
   SiSupabase,
   SiVercel,
+  SiSpringboot,
+  SiApachemaven,
 } from "react-icons/si";
 
 interface TechLogo {
@@ -29,64 +32,92 @@ interface TechLogoMarqueeProps {
   speed?: number;
 }
 
+const techLogos: TechLogo[] = [
+  { id: 1, icon: <FaReact size={40} />, name: "React", color: "#61DAFB" },
+  {
+    id: 2,
+    icon: <SiNextdotjs size={40} />,
+    name: "Next.js",
+    color: "#ffffff",
+  },
+  {
+    id: 3,
+    icon: <SiTypescript size={40} />,
+    name: "TypeScript",
+    color: "#3178C6",
+  },
+  { id: 4, icon: <FaJava size={40} />, name: "Java", color: "#f89820" },
+  {
+    id: 5,
+    icon: <SiSpringboot size={40} />,
+    name: "Spring Boot",
+    color: "#6DB33F",
+  },
+  { id: 6, icon: <FaNodeJs size={40} />, name: "Node.js", color: "#339933" },
+  {
+    id: 7,
+    icon: <SiApachemaven size={40} />,
+    name: "Maven",
+    color: "#C71A36",
+  },
+  { id: 8, icon: <FaJs size={40} />, name: "JavaScript", color: "#F7DF1E" },
+  { id: 9, icon: <FaHtml5 size={40} />, name: "HTML5", color: "#E34F26" },
+  { id: 10, icon: <FaCss3Alt size={40} />, name: "CSS3", color: "#1572B6" },
+  {
+    id: 11,
+    icon: <SiSupabase size={40} />,
+    name: "Supabase",
+    color: "#3ECF8E",
+  },
+  {
+    id: 12,
+    icon: <SiPostgresql size={40} />,
+    name: "PostgreSQL",
+    color: "#336791",
+  },
+  { id: 13, icon: <FaGitAlt size={40} />, name: "Git", color: "#F05032" },
+  { id: 14, icon: <FaGithub size={40} />, name: "GitHub", color: "#ffffff" },
+  { id: 15, icon: <SiVercel size={40} />, name: "Vercel", color: "#ffffff" },
+];
+
 export default function TechLogoMarquee({ speed = 30 }: TechLogoMarqueeProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const techLogos: TechLogo[] = [
-    { id: 1, icon: <FaReact size={40} />, name: "React", color: "#61DAFB" },
-    {
-      id: 2,
-      icon: <SiNextdotjs size={40} />,
-      name: "Next.js",
-      color: "#000000",
-    },
-    {
-      id: 3,
-      icon: <SiTypescript size={40} />,
-      name: "TypeScript",
-      color: "#3178C6",
-    },
-    { id: 4, icon: <FaNodeJs size={40} />, name: "Node.js", color: "#339933" },
-    {
-      id: 5,
-      icon: <SiTailwindcss size={40} />,
-      name: "Tailwind CSS",
-      color: "#06B6D4",
-    },
-    { id: 6, icon: <FaJs size={40} />, name: "JavaScript", color: "#F7DF1E" },
-    { id: 7, icon: <FaHtml5 size={40} />, name: "HTML5", color: "#E34F26" },
-    { id: 8, icon: <FaCss3Alt size={40} />, name: "CSS3", color: "#1572B6" },
-    {
-      id: 9,
-      icon: <SiSupabase size={40} />,
-      name: "Supabase",
-      color: "#3ECF8E",
-    },
-    {
-      id: 10,
-      icon: <SiPostgresql size={40} />,
-      name: "PostgreSQL",
-      color: "#336791",
-    },
-    { id: 11, icon: <FaGithub size={40} />, name: "GitHub", color: "#181717" },
-    { id: 12, icon: <SiVercel size={40} />, name: "Vercel", color: "#000000" },
-  ];
-
-  const repeatedLogos: TechLogo[] = [];
-  while (repeatedLogos.length < techLogos.length * 2.5) {
-    for (let i = 0; i < techLogos.length; i++) {
-      repeatedLogos.push(techLogos[i]);
+  const repeatedLogos = useMemo(() => {
+    const result: TechLogo[] = [];
+    while (result.length < techLogos.length * 2.5) {
+      for (let i = 0; i < techLogos.length; i++) {
+        result.push(techLogos[i]);
+      }
     }
-  }
+    return result;
+  }, []);
 
   const positionRef = useRef(0);
   const lastTimeRef = useRef<number | null>(null);
   const isPausedRef = useRef(false);
+  const isVisibleRef = useRef(true);
 
   useEffect(() => {
     const content = contentRef.current;
-    if (!content) return;
+    const container = containerRef.current;
+    if (!content || !container) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (prefersReducedMotion) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+        lastTimeRef.current = null;
+      },
+      { threshold: 0 }
+    );
+    observer.observe(container);
 
     let animationId: number;
 
@@ -98,7 +129,7 @@ export default function TechLogoMarquee({ speed = 30 }: TechLogoMarqueeProps) {
       const delta = timestamp - lastTimeRef.current;
       lastTimeRef.current = timestamp;
 
-      if (!isPausedRef.current) {
+      if (!isPausedRef.current && isVisibleRef.current && delta < 100) {
         positionRef.current += (delta / 1000) * speed;
         const offset = positionRef.current % content.scrollWidth;
         content.style.transform = `translateX(-${offset}px)`;
@@ -109,7 +140,10 @@ export default function TechLogoMarquee({ speed = 30 }: TechLogoMarqueeProps) {
 
     animationId = requestAnimationFrame(animate);
 
-    return () => cancelAnimationFrame(animationId);
+    return () => {
+      cancelAnimationFrame(animationId);
+      observer.disconnect();
+    };
   }, [speed]);
 
   return (

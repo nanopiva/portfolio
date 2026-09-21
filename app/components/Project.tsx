@@ -12,6 +12,7 @@ type ProjectProps = {
   codeUrl?: string;
   liveUrl?: string;
   techs?: string[];
+  priority?: boolean;
 };
 
 export default function Project({
@@ -21,7 +22,8 @@ export default function Project({
   image = "/placeholder.svg",
   codeUrl = "#",
   liveUrl = "#",
-  techs = ["Next.js", "Tailwind", "TypeScript", "Supabase"],
+  techs = ["Next.js", "TypeScript", "Supabase"],
+  priority = false,
 }: ProjectProps) {
   const isReversed = id % 2 === 0;
 
@@ -37,7 +39,7 @@ export default function Project({
           style={{ objectFit: "cover" }}
           className="group-hover:scale-105 transition-transform duration-500"
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          priority={id <= 2}
+          priority={priority}
         />
         <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-500" />
         <div className="absolute inset-0 border border-accent/0 group-hover:border-accent/40 rounded-xl transition-colors duration-500"></div>

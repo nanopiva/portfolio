@@ -29,7 +29,7 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 w-full py-3 px-4 sm:py-4 sm:px-6 z-50 backdrop-blur-md bg-background/70 border-b border-white/10">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link href="/" passHref>
+        <Link href="/">
           <h1
             className="text-lg sm:text-2xl font-bold tracking-wide text-accent transition-transform duration-200 hover:scale-105 cursor-pointer"
             title={t("home")}
@@ -55,7 +55,7 @@ export default function Navbar() {
 
           <span className="h-6 w-px bg-white/20 hidden sm:block"></span>
 
-          <Link
+          <a
             href="https://www.linkedin.com/in/mariano-piva-551964307/"
             target="_blank"
             rel="noopener noreferrer"
@@ -63,9 +63,9 @@ export default function Navbar() {
             className="p-1 sm:p-2 hover:text-accent transition duration-200 hover:scale-110"
           >
             <FaLinkedin />
-          </Link>
+          </a>
 
-          <Link
+          <a
             href="https://github.com/nanopiva"
             target="_blank"
             rel="noopener noreferrer"
@@ -73,7 +73,7 @@ export default function Navbar() {
             className="p-1 sm:p-2 hover:text-accent transition duration-200 hover:scale-110 hidden min-[290px]:block"
           >
             <FaGithub />
-          </Link>
+          </a>
 
           <a
             href={cvHref}

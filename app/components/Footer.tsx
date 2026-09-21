@@ -7,20 +7,14 @@ import { useLanguage } from "../contexts/LanguageContext";
 
 type FooterTranslations = {
   backToTop: string;
-  builtWith: string;
-  lastUpdate: string;
 };
 
 const translations = {
   es: {
-    backToTop: "Regresar a órbita",
-    builtWith: "Construido con Next.js, Tailwind y mucho",
-    lastUpdate: "Última actualización:",
+    backToTop: "Volver arriba",
   },
   en: {
-    backToTop: "Back to orbit",
-    builtWith: "Built with Next.js, Tailwind and lots of",
-    lastUpdate: "Last update:",
+    backToTop: "Back to top",
   },
 };
 
@@ -30,17 +24,13 @@ export default function Footer() {
 
   const [isClient, setIsClient] = useState(false);
   const [currentYear, setCurrentYear] = useState<number | null>(null);
-  const [lastUpdate, setLastUpdate] = useState<string | null>(null);
 
   const starPositions = [2, 4, 6, 8, 2.5, 3.5, 5.5, 7.5, 3, 5, 7, 4.5];
 
   useEffect(() => {
     setIsClient(true);
     setCurrentYear(new Date().getFullYear());
-    setLastUpdate(
-      new Date().toLocaleDateString(lang === "es" ? "es-AR" : "en-US")
-    );
-  }, [lang]);
+  }, []);
 
   return (
     <footer className="relative bg-deep py-8 overflow-hidden">
@@ -87,7 +77,7 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row items-center gap-5 md:gap-10">
           <Link
-            href={lang === "es" ? "#inicio" : "#home"}
+            href="#inicio"
             className="group text-particle-1 font-sora text-sm hover:text-accent transition-colors flex items-center"
           >
             <motion.span
@@ -130,9 +120,10 @@ export default function Footer() {
           </div>
 
           <div className="flex gap-6">
-            <Link
+            <a
               href="https://github.com/nanopiva"
               target="_blank"
+              rel="noopener noreferrer"
               className="text-particle-1 hover:text-accent transition-colors group relative"
               aria-label="GitHub"
             >
@@ -157,11 +148,12 @@ export default function Footer() {
                   className="absolute -bottom-1 left-0 right-0 h-px bg-accent"
                 />
               </motion.div>
-            </Link>
+            </a>
 
-            <Link
+            <a
               href="https://www.linkedin.com/in/mariano-piva-551964307/"
               target="_blank"
+              rel="noopener noreferrer"
               className="text-particle-1 hover:text-accent transition-colors group relative"
               aria-label="LinkedIn"
             >
@@ -187,29 +179,9 @@ export default function Footer() {
                   className="absolute -bottom-1 left-0 right-0 h-px bg-accent"
                 />
               </motion.div>
-            </Link>
+            </a>
           </div>
         </div>
-
-        <motion.div className="mt-6 text-center" whileHover={{ scale: 1.02 }}>
-          <p className="text-particle-2 font-sora text-xs opacity-80 hover:opacity-100 transition-opacity">
-            {t.builtWith} <span className="text-accent/80">🧉</span>
-          </p>
-          {isClient && (
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 0.5 }}
-              transition={{ delay: 0.5 }}
-              className="text-[10px] mt-1 text-particle-2 font-mono"
-            >
-              v1.0.0 • {t.lastUpdate}{" "}
-              {lastUpdate ||
-                new Date().toLocaleDateString(
-                  lang === "es" ? "es-AR" : "en-US"
-                )}
-            </motion.p>
-          )}
-        </motion.div>
       </motion.div>
     </footer>
   );

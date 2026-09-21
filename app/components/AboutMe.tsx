@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import { useRef } from "react";
 import Image from "next/image";
 import aboutPicture from "../../public/Foto de Nano.jpg";
 import TecnologiasScroll from "../components/TecnologiasScroll";
@@ -11,7 +11,7 @@ interface AboutMeContent {
   title: string;
   intro: string;
   passion: string;
-  strength: string;
+  stack: string;
   languages: string;
   highlighted: {
     [key: string]: string;
@@ -19,9 +19,8 @@ interface AboutMeContent {
 }
 
 export default function AboutMe() {
-  const { ref, inView } = useInView({
-    threshold: 0.3,
-  });
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { amount: 0.3 });
 
   const { lang } = useLanguage();
 
@@ -29,17 +28,12 @@ export default function AboutMe() {
     es: {
       title: "sobre_mí",
       intro:
-        "Soy Mariano Piva, un desarrollador fullstack argentino, curioso por naturaleza y {autodidacta} desde hace años. Actualmente estoy estudiando la {carrera}, combinando formación académica con práctica constante.",
+        "Hola, soy Mariano Piva, desarrollador de software argentino. Me gusta trabajar en aplicaciones completas, desde el backend y la base de datos hasta la interfaz.",
       passion:
-        "Me apasiona crear {interfaces} limpias, funcionales y con una experiencia de usuario cuidada al detalle. Actualmente desarrollo {proyectos} utilizando:",
-      strength:
-        "Mi mayor fortaleza es el aprendizaje constante a través de la práctica, enfocándome en construir aplicaciones modernas que integren tanto diseño cuidado como lógica robusta del lado del cliente y del servidor.",
-      languages: "Hablo {español} (nativo), {inglés} e {italiano} con fluidez.",
+        "Me especializo en el backend con Java, Spring Boot y PostgreSQL, y cuando el proyecto lo requiere trabajo también en el frontend con React y Next.js.",
+      stack: "Stack principal:",
+      languages: "Idiomas: {español} (nativo), {inglés} e {italiano}.",
       highlighted: {
-        autodidacta: "autodidacta",
-        carrera: "Tecnicatura en Desarrollo de Software",
-        interfaces: "interfaces",
-        proyectos: "proyectos fullstack",
         español: "español",
         inglés: "inglés",
         italiano: "italiano",
@@ -48,18 +42,12 @@ export default function AboutMe() {
     en: {
       title: "about_me",
       intro:
-        "I'm Mariano Piva, a fullstack developer from Argentina, naturally curious and a {selfTaught} learner for years. I am currently studying a {degree}, combining academic training with constant practice.",
+        "Hi, I'm Mariano Piva, a software developer from Argentina. I like working on complete applications, from the backend and the database to the interface.",
       passion:
-        "I'm passionate about creating clean and functional {interfaces} with carefully detailed user experience. Currently developing {projects} using:",
-      strength:
-        "My greatest strength is continuous learning through practice, focusing on building modern applications that integrate both careful design and robust client-side and server-side logic.",
-      languages:
-        "I speak {spanish} (native), {english} and {italian} fluently.",
+        "I focus on the backend with Java, Spring Boot and PostgreSQL, and when the project needs it I also work on the frontend with React and Next.js.",
+      stack: "Main stack:",
+      languages: "Languages: {spanish} (native), {english} and {italian}.",
       highlighted: {
-        selfTaught: "self-taught",
-        degree: "Technical Degree in Software Development",
-        interfaces: "interfaces",
-        projects: "fullstack projects",
         spanish: "Spanish",
         english: "English",
         italian: "Italian",
@@ -123,9 +111,9 @@ export default function AboutMe() {
                       ? "Foto de Mariano Piva"
                       : "Photo of Mariano Piva"
                   }
-                  layout="fill"
-                  objectFit="cover"
-                  className="group-hover:scale-105 transition-transform duration-500"
+                  fill
+                  sizes="(max-width: 640px) 256px, (max-width: 1024px) 320px, 360px"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                   priority
                 />
               </div>
@@ -164,57 +152,57 @@ export default function AboutMe() {
                   )}
                 </motion.p>
 
-                <motion.ul
-                  className="grid grid-cols-2 sm:grid-cols-3 gap-y-2 gap-x-4 mb-6 max-w-md"
-                  initial="hidden"
-                  animate="visible"
-                  variants={{
-                    hidden: {},
-                    visible: {
-                      transition: {
-                        staggerChildren: 0.05,
-                        delayChildren: 0.4,
+                <div>
+                  <motion.p
+                    className="text-xs sm:text-sm font-mono uppercase tracking-wider text-text/50 mb-3"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                  >
+                    {currentContent.stack}
+                  </motion.p>
+                  <motion.ul
+                    className="grid grid-cols-2 sm:grid-cols-3 gap-y-2 gap-x-4 max-w-md"
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                      hidden: {},
+                      visible: {
+                        transition: {
+                          staggerChildren: 0.05,
+                          delayChildren: 0.4,
+                        },
                       },
-                    },
-                  }}
-                >
-                  {[
-                    "Next.js",
-                    "React",
-                    "JavaScript",
-                    "TypeScript",
-                    "C++",
-                    "PostgreSQL",
-                    "Supabase",
-                  ].map((tech) => (
-                    <motion.li
-                      key={tech}
-                      variants={{
-                        hidden: { opacity: 0, x: -10 },
-                        visible: { opacity: 1, x: 0 },
-                      }}
-                      className="flex items-center text-sm sm:text-base"
-                    >
-                      <span className="text-accent mr-2">▹</span>
-                      <span className="font-mono text-text/90">{tech}</span>
-                    </motion.li>
-                  ))}
-                </motion.ul>
+                    }}
+                  >
+                    {[
+                      "Java",
+                      "Spring Boot",
+                      "PostgreSQL",
+                      "Next.js",
+                      "React",
+                      "TypeScript",
+                    ].map((tech) => (
+                      <motion.li
+                        key={tech}
+                        variants={{
+                          hidden: { opacity: 0, x: -10 },
+                          visible: { opacity: 1, x: 0 },
+                        }}
+                        className="flex items-center text-sm sm:text-base"
+                      >
+                        <span className="text-accent mr-2">▹</span>
+                        <span className="font-mono text-text/90">{tech}</span>
+                      </motion.li>
+                    ))}
+                  </motion.ul>
+                </div>
 
                 <motion.p
                   className="text-base sm:text-lg leading-relaxed text-text/80"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
-                >
-                  {currentContent.strength}
-                </motion.p>
-
-                <motion.p
-                  className="text-base sm:text-lg leading-relaxed text-text/80"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7 }}
                 >
                   {renderText(
                     currentContent.languages,

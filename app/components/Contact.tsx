@@ -46,19 +46,18 @@ const translations = {
     submit: "Enviar mensaje",
     submitting: "Enviando...",
     messages: {
-      success: "¡Mensaje enviado con éxito! Me pondré en contacto pronto.",
-      error:
-        "Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.",
+      success: "Mensaje enviado. Te respondo a la brevedad.",
+      error: "No se pudo enviar el mensaje. Probá de nuevo más tarde.",
     },
     availability: {
       title: "Disponibilidad",
-      text: "Actualmente abierto a nuevas oportunidades y proyectos interesantes.",
+      text: "Estoy disponible para proyectos nuevos.",
     },
     directContact: {
       title: "Contacto directo",
     },
     connect: {
-      title: "Conectemos",
+      title: "Redes",
     },
   },
   en: {
@@ -71,18 +70,18 @@ const translations = {
     submit: "Send message",
     submitting: "Sending...",
     messages: {
-      success: "Message sent successfully! I'll get back to you soon.",
-      error: "There was an error sending your message. Please try again later.",
+      success: "Message sent. I'll get back to you soon.",
+      error: "Couldn't send the message. Please try again later.",
     },
     availability: {
       title: "Availability",
-      text: "Currently open to new opportunities and interesting projects.",
+      text: "Available for new projects.",
     },
     directContact: {
       title: "Direct contact",
     },
     connect: {
-      title: "Let's connect",
+      title: "Links",
     },
   },
 };

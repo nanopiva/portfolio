@@ -22,25 +22,42 @@ type Project = {
 
 const projectData: Project[] = [
   {
+    id: 5,
+    name: {
+      es: "Citero – Gestión de turnos y reservas",
+      en: "Citero – Appointment and Booking Management",
+    },
+    description: {
+      es: "Una plataforma para que negocios que trabajan con turnos (barberías, clínicas, salones, spas) ordenen su agenda. El cliente reserva solo desde el link del negocio y elige servicio, profesional y horario entre los que quedan libres. Tiene verificación por código (OTP), recordatorios automáticos por email, invitación de empleados, un sistema de reputación con strikes para reducir las ausencias y un panel con métricas de turnos e ingresos. El backend está hecho en Java 21 con Spring Boot y PostgreSQL, y el frontend en Next.js.",
+      en: "A platform for businesses that work with appointments (barbershops, clinics, salons, spas) to keep their schedule in order. Clients book on their own from the business link and pick a service, a professional and a time from the available slots. It has code verification (OTP), automatic email reminders, staff invitations, a reputation system with strikes to reduce no-shows, and a dashboard with appointment and revenue metrics. The backend is built with Java 21, Spring Boot and PostgreSQL, and the frontend with Next.js.",
+    },
+    image: "/projectCitero.png",
+    codeUrl: "https://github.com/nanopiva/citero-backend",
+    liveUrl: "https://citero.app",
+    techs: [
+      "Java 21",
+      "Spring Boot",
+      "Spring Security",
+      "PostgreSQL",
+      "Flyway",
+      "Next.js",
+      "TypeScript",
+    ],
+  },
+  {
     id: 3,
     name: {
       es: "MutualDesk – Plataforma de escritura colaborativa",
       en: "MutualDesk – Collaborative Writing Platform",
     },
     description: {
-      es: "Aplicación web tipo Google Docs desarrollada desde cero para fomentar la colaboración en tiempo real entre usuarios. Permite crear y editar documentos de forma grupal, gestionar miembros, organizar proyectos y comunicarse mediante un sistema de chat integrado. El foco está puesto en la experiencia de usuario, la interacción fluida y la sincronización eficiente de datos.",
-      en: "Google Docs-like web application developed from scratch to foster real-time collaboration among users. It allows creating and editing documents in groups, managing members, organizing projects, and communicating through an integrated chat system. The focus is on user experience, smooth interaction, and efficient data synchronization.",
+      es: "Un editor de textos colaborativo inspirado en Google Docs. Varias personas pueden editar el mismo documento a la vez, y además la app maneja proyectos, grupos, contactos e invitaciones, autenticación con Supabase y perfil de usuario.",
+      en: "A collaborative text editor inspired by Google Docs. Several people can edit the same document at once, and the app also handles projects, groups, contacts and invitations, Supabase authentication and user profiles.",
     },
     image: "/projectMutualdesk.webp",
     codeUrl: "https://github.com/nanopiva/mutualdeskapp",
     liveUrl: "https://v0-mutual-desk-v9gidesob5y.vercel.app",
-    techs: [
-      "Next.js",
-      "TypeScript",
-      "Supabase (auth, base de datos y almacenamiento)",
-      "Lexical (editor de texto en tiempo real)",
-      "CSS Modules",
-    ],
+    techs: ["Next.js", "TypeScript", "Supabase", "CSS Modules", "Zustand"],
   },
   {
     id: 4,
@@ -49,20 +66,13 @@ const projectData: Project[] = [
       en: "Lumen Tools – Custom E-commerce",
     },
     description: {
-      es: "Proyecto de e-commerce desarrollado desde cero utilizando Next.js y Supabase. Incluye frontend con filtros dinámicos, carrito persistente, vista de producto y checkout simulado, además de un panel de administración privado con gestión completa de productos, categorías y marcas.",
-      en: "E-commerce project built from scratch using Next.js and Supabase. It includes a frontend with dynamic filters, persistent cart, product view and simulated checkout, as well as a private admin panel with full product, category and brand management.",
+      es: "Un e-commerce hecho con Next.js y Supabase. La tienda tiene búsqueda y filtros por categoría, marca y precio, carrito, checkout con formulario y una compra simulada que envía el email de confirmación con Resend. El panel de administración (CMS) maneja productos, pedidos, categorías, subcategorías y marcas, y permite elegir los destacados de la home. El acceso está restringido a cuentas de administrador.",
+      en: "An e-commerce built with Next.js and Supabase. The storefront has search and filters by category, brand and price, a cart, a checkout form and a simulated purchase that sends the confirmation email with Resend. The admin panel (CMS) manages products, orders, categories, subcategories and brands, and lets you pick the featured products for the home page. Access is restricted to admin accounts.",
     },
     image: "/projectLumen.webp",
     codeUrl: "https://github.com/nanopiva/lumen",
     liveUrl: "https://lumen-phi-nine.vercel.app",
-    techs: [
-      "Next.js",
-      "TypeScript",
-      "Supabase",
-      "CSS Modules",
-      "Framer Motion",
-      "RESEND",
-    ],
+    techs: ["Next.js", "TypeScript", "Supabase", "CSS Modules", "Resend"],
   },
   {
     id: 2,
@@ -71,13 +81,13 @@ const projectData: Project[] = [
       en: "CyC Legal Solutions - Law Firm",
     },
     description: {
-      es: "Sitio institucional para un estudio jurídico integral. El objetivo fue crear una presencia web profesional y elegante. Se priorizó la legibilidad, la confianza visual y una estética sobria acorde al rubro legal.",
-      en: "Institutional website for a comprehensive law firm. The goal was to create a professional and elegant web presence. We prioritized readability, visual trustworthiness, and a sober aesthetic appropriate for the legal field.",
+      es: "Sitio para un estudio jurídico, con páginas de inicio, áreas de práctica, nosotros y contacto. La idea era una presencia sobria y legible, que diera confianza sin sobrecargar.",
+      en: "Website for a law firm, with home, practice areas, about and contact pages. The idea was a sober, readable presence that builds trust without overloading.",
     },
     image: "/projectCyc.webp",
     codeUrl: "https://github.com/nanopiva/cycestudio",
     liveUrl: "https://www.cycsolucioneslegales.com.ar",
-    techs: ["Next.js", "Framer Motion", "Tailwind", "SEO"],
+    techs: ["Next.js", "TypeScript", "CSS Modules", "SEO"],
   },
   {
     id: 1,
@@ -86,13 +96,13 @@ const projectData: Project[] = [
       en: "Koble - Business Consulting and CRM",
     },
     description: {
-      es: "Landing page desarrollada para una consultora especializada en potenciar la eficiencia de empresas mediante asesorías personalizadas e implementación de sistemas CRM. El diseño busca transmitir claridad, profesionalismo y cercanía, con una navegación simple y contenido directo.",
-      en: "Landing page developed for a consulting firm specializing in enhancing business efficiency through personalized advice and CRM system implementation. The design aims to convey clarity, professionalism, and approachability with simple navigation and straightforward content.",
+      es: "Sitio para una consultora que implementa sistemas CRM. Tiene páginas de servicios, nosotros y contacto, además de las legales, con una navegación simple y contenido directo.",
+      en: "Website for a consulting firm that implements CRM systems. It has services, about and contact pages, plus the legal ones, with simple navigation and straightforward content.",
     },
     image: "/projectKoble.webp",
     codeUrl: "https://github.com/nanopiva/koble",
     liveUrl: "https://koble.com.ar",
-    techs: ["Next.js", "TypeScript", "CSS Modules", "Framer Motion"],
+    techs: ["Next.js", "TypeScript", "CSS Modules", "SEO"],
   },
 ];
 

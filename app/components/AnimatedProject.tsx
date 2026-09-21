@@ -40,7 +40,7 @@ export function AnimatedProject({ project, index }: AnimatedProjectProps) {
       }}
       className="w-full"
     >
-      <Project {...project} />
+      <Project {...project} priority={index === 0} />
     </motion.div>
   );
 }

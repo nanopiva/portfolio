@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   motion,
   useScroll,
@@ -13,6 +13,7 @@ import { useLanguage } from "../contexts/LanguageContext";
 export default function Hero() {
   const [showCursor, setShowCursor] = useState(true);
   const [animateKey, setAnimateKey] = useState(0);
+  const isFirstRender = useRef(true);
   const { scrollY } = useScroll();
   const { lang } = useLanguage();
 
@@ -20,17 +21,13 @@ export default function Hero() {
     es: {
       greeting: "hola, soy ",
       name: "mariano",
-      subtitle: "Desarrollador fullstack.",
-      description1: "Apasionado por la programación.",
-      description2: "En formación continua.",
+      subtitle: "Desarrollador Java & Fullstack.",
       scrollPrompt: "deslizá",
     },
     en: {
       greeting: "hello, I'm ",
       name: "mariano",
-      subtitle: "Fullstack developer.",
-      description1: "Passionate about programming.",
-      description2: "Continuously learning.",
+      subtitle: "Java & Fullstack Developer.",
       scrollPrompt: "scroll",
     },
   };
@@ -67,36 +64,40 @@ export default function Hero() {
     {
       className: "top-1/4 left-1/4 w-2 h-2 bg-accent/60",
       y: particle1Y,
-      animate: { y: [0, -20, 0], opacity: [0.6, 1, 0.6] },
+      animate: { opacity: [0.6, 1, 0.6] },
       transition: { duration: 4, delay: 0 },
     },
     {
       className: "top-1/3 right-1/3 w-1 h-1 bg-white/80",
       y: particle2Y,
-      animate: { y: [0, 15, 0], opacity: [0.8, 0.4, 0.8] },
+      animate: { opacity: [0.8, 0.4, 0.8] },
       transition: { duration: 3.5, delay: 1 },
     },
     {
       className: "bottom-1/4 right-1/4 w-1 h-1 bg-accent/40",
       y: particle3Y,
-      animate: { y: [0, -10, 0], opacity: [0.4, 0.8, 0.4] },
+      animate: { opacity: [0.4, 0.8, 0.4] },
       transition: { duration: 5, delay: 2 },
     },
     {
       className: "top-1/2 left-1/6 w-1 h-1 bg-accent/30",
       y: particle4Y,
-      animate: { x: [0, 10, 0], y: [0, -15, 0], opacity: [0.3, 0.7, 0.3] },
+      animate: { x: [0, 10, 0], opacity: [0.3, 0.7, 0.3] },
       transition: { duration: 6, delay: 0.5 },
     },
     {
       className: "bottom-1/3 left-1/2 w-1 h-1 bg-white/60",
       y: particle5Y,
-      animate: { x: [0, -8, 0], y: [0, 12, 0], opacity: [0.6, 0.3, 0.6] },
+      animate: { x: [0, -8, 0], opacity: [0.6, 0.3, 0.6] },
       transition: { duration: 4.5, delay: 1.5 },
     },
   ];
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     setAnimateKey((prev) => prev + 1);
   }, [lang]);
 
@@ -112,6 +113,7 @@ export default function Hero() {
   return (
     <motion.section
       key={`hero-section-${animateKey}`}
+      id="inicio"
       className="h-screen flex flex-col items-center justify-center text-center px-6 md:px-6 relative overflow-hidden"
       style={{
         y: yFloat,
@@ -185,28 +187,6 @@ export default function Hero() {
           >
             {currentContent.subtitle}
           </motion.h2>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-6 max-w-xl text-base sm:text-lg text-text/80 relative z-10 px-2"
-          >
-            <motion.p
-              initial={{ y: 10 }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-            >
-              {currentContent.description1}
-            </motion.p>
-            <motion.p
-              initial={{ y: 10 }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.5, delay: 1 }}
-            >
-              {currentContent.description2}
-            </motion.p>
-          </motion.div>
         </motion.div>
       </AnimatePresence>
 

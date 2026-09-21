@@ -5,10 +5,44 @@ import Footer from "./components/Footer";
 import Background from "./components/Background";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { cookies } from "next/headers";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
-  title: "Mariano Piva — Portfolio",
+  title: "Mariano Piva — Desarrollador Java & Fullstack",
+  description:
+    "Portfolio de Mariano Piva, desarrollador de software argentino. Trabajo principalmente con Java y Spring Boot, y también con React y Next.js.",
+  keywords: [
+    "Mariano Piva",
+    "Java Developer",
+    "Spring Boot",
+    "Fullstack Developer",
+    "Next.js",
+    "React",
+    "PostgreSQL",
+    "Portfolio",
+  ],
+  authors: [{ name: "Mariano Piva", url: "https://github.com/nanopiva" }],
+  creator: "Mariano Piva",
+  openGraph: {
+    type: "website",
+    locale: "es_AR",
+    title: "Mariano Piva — Desarrollador Java & Fullstack",
+    description:
+      "Desarrollador de software argentino. Java, Spring Boot y PostgreSQL en el backend; React y Next.js cuando hace falta.",
+    siteName: "nanopiva",
+  },
+  twitter: {
+    card: "summary",
+    title: "Mariano Piva — Desarrollador Java & Fullstack",
+    description:
+      "Desarrollador de software argentino. Java, Spring Boot y PostgreSQL en el backend; React y Next.js cuando hace falta.",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0a0f1c",
 };
 
 const sora = Sora({
@@ -38,17 +72,6 @@ export default async function RootLayout({
 
   return (
     <html lang={initialLang}>
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#ffffff" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-      </head>
-
       <body
         className={`${sora.variable} ${orbitron.variable} font-[var(--font-sora)]`}
       >

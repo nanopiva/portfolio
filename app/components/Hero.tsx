@@ -21,13 +21,13 @@ export default function Hero() {
     es: {
       greeting: "hola, soy ",
       name: "mariano",
-      subtitle: "Desarrollador Java & Fullstack.",
+      subtitle: "Desarrollador Fullstack.",
       scrollPrompt: "deslizá",
     },
     en: {
       greeting: "hello, I'm ",
       name: "mariano",
-      subtitle: "Java & Fullstack Developer.",
+      subtitle: "Fullstack Developer.",
       scrollPrompt: "scroll",
     },
   };

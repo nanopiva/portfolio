@@ -10,7 +10,7 @@ import type { Metadata, Viewport } from "next";
 export const metadata: Metadata = {
   title: "Mariano Piva - Portfolio",
   description:
-    "Portfolio de Mariano Piva, desarrollador de software argentino. Trabajo principalmente con Java y Spring Boot, y también con React y Next.js.",
+    "Portfolio de Mariano Piva, desarrollador fullstack argentino. Trabajo con Java y Spring Boot en el backend, y con React y Next.js en el frontend.",
   keywords: [
     "Mariano Piva",
     "Java Developer",
@@ -26,14 +26,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_AR",
-    title: "Mariano Piva — Desarrollador Java & Fullstack",
+    title: "Mariano Piva — Desarrollador Fullstack",
     description:
       "Desarrollador de software argentino. Java, Spring Boot y PostgreSQL en el backend; React y Next.js cuando hace falta.",
     siteName: "nanopiva",
   },
   twitter: {
     card: "summary",
-    title: "Mariano Piva — Desarrollador Java & Fullstack",
+    title: "Mariano Piva — Desarrollador Fullstack",
     description:
       "Desarrollador de software argentino. Java, Spring Boot y PostgreSQL en el backend; React y Next.js cuando hace falta.",
   },

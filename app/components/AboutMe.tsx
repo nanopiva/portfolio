@@ -30,7 +30,7 @@ export default function AboutMe() {
       intro:
         "Hola, soy Mariano Piva, desarrollador de software argentino. Me gusta trabajar en aplicaciones completas, desde el backend y la base de datos hasta la interfaz.",
       passion:
-        "Me especializo en el backend con Java, Spring Boot y PostgreSQL, y cuando el proyecto lo requiere trabajo también en el frontend con React y Next.js.",
+        "Me especializo en el backend con Java, Spring Boot y PostgreSQL, y desarrollo el frontend con React y Next.js cuando el proyecto lo requiere.",
       stack: "Stack principal:",
       languages: "Idiomas: {español} (nativo), {inglés} e {italiano}.",
       highlighted: {
@@ -44,7 +44,7 @@ export default function AboutMe() {
       intro:
         "Hi, I'm Mariano Piva, a software developer from Argentina. I like working on complete applications, from the backend and the database to the interface.",
       passion:
-        "I focus on the backend with Java, Spring Boot and PostgreSQL, and when the project needs it I also work on the frontend with React and Next.js.",
+        "I focus on the backend with Java, Spring Boot and PostgreSQL, and build the frontend with React and Next.js when the project needs it.",
       stack: "Main stack:",
       languages: "Languages: {spanish} (native), {english} and {italian}.",
       highlighted: {
